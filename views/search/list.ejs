@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="URF-8">
+  <title>Search Page</title>
+  <%- include("../_share/stylesheets.ejs") %>
+</head>
+
+<body>
+  <%- include("../_share/navbar.ejs") %>
+  <div class="container">
+    <div class="page-header">
+      <h1><i class="fa fa-search fa-fw"></i>記事検索</h1>
+    </div>
+    <form method="GET" action="/search" class="form-inline">
+      <input type="text" id="keyword" name="keyword" class="form-control" value="<%= keyword %>" />
+      <input type="submit" value="検索" class="btn btn-default" />
+    </form>
+    <div>
+      <p class="form-control-static">結果：<%= count %></p>
+    </div>
+    <div>
+      <% for(var i = 0; i<list.length; i++){ %>
+      <%- include("./item.ejs", list[i]) %>
+      <% } %>
+    </div>
+    <div>
+      <ul class="pagination">
+        <% for (var i = 1; i <= pagination.max; i++) { %>
+        <%   if (i !== pagination.current) { %>
+          <li><a href="/search?keyword=<%= keyword%>&page=<%= i %>"><%= i %></a></li>
+        <%   } else { %>
+          <li class="active"><a><%= i %></a></li>
+        <%   } %>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>

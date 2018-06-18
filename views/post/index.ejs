@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="URF-8">
+  <title><%= title %></title>
+  <%- include("../_share/stylesheets.ejs") %>
+</head>
+
+<body>
+  <%- include("../_share/navbar.ejs") %>
+  <div class="container">
+    <div class="page-header">
+      <h1><%= title %></h1>
+    </div>
+    <dl class="dl-horizontal">
+      <dt>published:</dt>
+      <dd><%= published.toLocaleString() %></dd>
+      <dt>author:</dt>
+      <dd><%= authors %></dd>
+      <dt>keyword:</dt>
+      <dd><%= keywords %></dd>
+    </dl>
+    <p><%= content %></p>
+  </div>
+</body>
+
+</html>
